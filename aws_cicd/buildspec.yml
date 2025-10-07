@@ -1,0 +1,27 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: 17
+    commands:
+      - echo Installing Maven
+      - yum update -y
+      - yum install -y maven
+      - export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which java)))))
+      - echo JAVA_HOME is $JAVA_HOME
+  pre_build:
+    commands:
+      - echo Pre-build phase
+      - mvn --version
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn clean package
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/demo-0.0.1-SNAPSHOT.jar
+    - README.md
+    - pom.xml
