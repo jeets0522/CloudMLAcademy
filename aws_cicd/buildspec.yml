@@ -22,7 +22,8 @@ phases:
     commands:
       - echo Build completed on `date`
 artifacts:
+  base-directory: aws_cicd       # treat aws_cicd/ as root of artifact
   files:
-    - aws_cicd/target/demo-0.0.1-SNAPSHOT.jar
-    - aws_cicd/README.md
-    - aws_cicd/pom.xml
+    - appspec.yml                # must include appspec
+    - scripts/**/*               # include all scripts
+    - target/demo-0.0.1-SNAPSHOT.jar  # include jar
