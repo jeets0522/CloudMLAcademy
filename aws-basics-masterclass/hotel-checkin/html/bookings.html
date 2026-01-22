@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - Guest Check-Ins</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+    <h2 class="text-center mb-4">Guest Check-Ins</h2>
+
+    <div class="table-responsive">
+        <table id="checkin-table" class="table table-striped table-hover table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Booking ID</th>
+                    <th>Room</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- jQuery (required by DataTables) -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+fetch("https://lui56mscbb.execute-api.us-east-1.amazonaws.com/list-checkin")
+.then(res => res.json())
+.then(data => {
+    const tbody = $("#checkin-table tbody");
+
+    data.forEach(row => {
+        tbody.append(`
+            <tr>
+                <td>${row.name}</td>
+                <td>${row.email}</td>
+                <td>${row.bookingId}</td>
+                <td>${row.room}</td>
+                <td>${row.date}</td>
+            </tr>
+        `);
+    });
+
+    // Initialize DataTables
+    $('#checkin-table').DataTable({
+        responsive: true,
+        pageLength: 10,
+        lengthChange: false
+    });
+})
+.catch(err => console.error("Error fetching check-ins:", err));
+</script>
+
+</body>
+</html>
