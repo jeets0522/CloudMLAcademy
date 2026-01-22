@@ -114,4 +114,6 @@ Step 6) Create Lambda function URL
             list-checkin --> https://x7bhmyh7qhwnrpx3thousnpscq0ziawn.lambda-url.us-east-1.on.aws/
                 Copy this URL in bookings.html
 
+Step 7) Goto bucket and update the URL's for static website and list bookings in the html file
+
 Now open the static website url and make a booking and list bookings.
