@@ -1,8 +1,8 @@
 # CloudMLAcademy
 Hands on Labs practicals files
 
-S3-- Static Website
-Lambda handler for api requests
+S3-- Static Website for static files  
+Lambda handler for api requests  
 DB  for persist     ----  RDS Postgres
 
 ![alt text](architecture.jpg)
