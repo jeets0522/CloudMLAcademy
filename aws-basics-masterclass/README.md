@@ -5,7 +5,7 @@ S3-- Static Website
 Lambda handler for api requests
 DB  for persist     ----  RDS Postgres
 
-![alt text](image.png)
+![alt text](architecture.jpg)
 
 Step 1) Create S3 bucket named hotel-checkin
 
