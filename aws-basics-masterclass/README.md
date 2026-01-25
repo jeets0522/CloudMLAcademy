@@ -94,8 +94,18 @@ Step 5) Now create a lambda for savecheckin and list checkins
         }
         ```
 
+Step 7) Simple Lambda
+        a)Create a simple lambda function using file simplePythonLamda
+        b) Generate function URL
+        c) Enable CORS
+        d) Test from postman using the URL and body as:
+        {
+            "key1": "amit",
+            "key2": "nisha",
+            "key3": "supriya"
+         }
 
-Step 6) Create Lambda function URL
+Step 6) Create Lambda function URL for hotel checkin app
 
         a) Under the Lambda click on Configuration TAB --> Function URL --> Create Function URl
             AUTH Type : NONE

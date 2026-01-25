@@ -1,0 +1,28 @@
+import json
+
+def lambda_handler(event, context):
+    # Determine where the payload is
+    if 'body' in event and event['body']:
+        try:
+            payload = json.loads(event['body'])
+        except Exception:
+            payload = {}
+    else:
+        # Console test passes JSON directly
+        payload = event
+
+    key1 = payload.get('key1', '')
+    key2 = payload.get('key2', '')
+    key3 = payload.get('key3', '')
+
+    print(f"value1 = {key1}, value2 = {key2}, value3 = {key3}")
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({
+            "echo_key1": key1,
+            "echo_key2": key2,
+            "echo_key3": key3
+        })
+    }
