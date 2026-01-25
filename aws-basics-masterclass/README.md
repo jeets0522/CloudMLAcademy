@@ -44,20 +44,17 @@ Step 2) Creating RDS/Postgress DB steps
     d) username: postgres 
     e) pwd: Postgres1!
     f) Choose security group which we created in Step a.
+    g) Choose Publicly Accessible
     g) In Additional Configuration, disable Automated Backup
 
 Step 3) Check the DB connection.
 
-    a) Create a EC2 instance to connect to database.
-    b) Install postgresql client on EC2: 
-        ```bash
-        sudo dnf update -y
-        sudo dnf install postgresql15 -y
-        ```
-    c) psql -h hotel-checkin-db.ckpoyk4gmqrl.us-east-1.rds.amazonaws.com -U postgres -d hotel
-    d) \dt to list tables
+   a) Connect using dbeaver client from your laptop
+   b) Create a database hotel-checkin use namesapce default.
+   c) The database will not list, you need to make a new postgressql connection and put hotel-checkin as db.
 
-Step 4) Create table for our application in DB
+
+Step 4) Create table for our application in hotel-checkin DB
 
     ```sql
     CREATE TABLE checkins (
@@ -117,3 +114,5 @@ Step 6) Create Lambda function URL
 Step 7) Goto bucket and update the URL's for static website and list bookings in the html file
 
 Now open the static website url and make a booking and list bookings.
+
+Step 8) Once all done delete all resources RDS db, Lambda and buckets to avoid billing
